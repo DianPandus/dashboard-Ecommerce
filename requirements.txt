@@ -1,4 +1,7 @@
-streamlit==1.26.0
+streamlit>=1.30.0
 pandas>=2.1.0
 numpy>=1.26.0
-setuptools>=60.0.0
+matplotlib
+seaborn
+plotly
+babel
