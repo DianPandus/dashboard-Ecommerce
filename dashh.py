@@ -9,6 +9,13 @@ import plotly.express as px
 # Set style seaborn
 sns.set(style='dark')
 
+if uploaded_file is not None:
+    all_df = pd.read_csv(uploaded_file)
+    st.success("File berhasil diunggah!")
+else:
+    st.warning("Silakan upload file CSV terlebih dahulu.")
+    st.stop()  # Menghentikan eksekusi jika tidak ada file
+
 # Load data
 all_df = pd.read_csv('all_data.csv')
 
@@ -38,13 +45,6 @@ Dashboard ini menampilkan berbagai analisis terkait penjualan, pelanggan, dan pr
 """)
 
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
-
-if uploaded_file is not None:
-    all_df = pd.read_csv(uploaded_file)
-    st.success("File berhasil diunggah!")
-else:
-    st.warning("Silakan upload file CSV terlebih dahulu.")
-    st.stop()  # Menghentikan eksekusi jika tidak ada file
 
 
 # Metrik utama
