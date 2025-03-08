@@ -7,6 +7,7 @@ from babel.numbers import format_currency
 import requests
 import plotly.express as px
 from io import StringIO
+from io import BytesIO  
 
 # ID file dari Google Drive
 file_id = "1gFSBGm9U_w6rrHvP3qnTnvnGT2Mwc1LP"  # Ganti dengan ID file-mu
