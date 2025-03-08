@@ -37,6 +37,16 @@ st.markdown("""
 Dashboard ini menampilkan berbagai analisis terkait penjualan, pelanggan, dan produk dari data e-commerce.
 """)
 
+uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
+
+if uploaded_file is not None:
+    all_df = pd.read_csv(uploaded_file)
+    st.success("File berhasil diunggah!")
+else:
+    st.warning("Silakan upload file CSV terlebih dahulu.")
+    st.stop()  # Menghentikan eksekusi jika tidak ada file
+
+
 # Metrik utama
 st.header('Metrik Utama')
 col1, col2, col3 = st.columns(3)
