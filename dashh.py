@@ -5,16 +5,23 @@ import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
 import plotly.express as px
+from io import StringIO
 
-# Set style seaborn
-sns.set(style='dark')
+# ID file dari Google Drive
+file_id = "1gFSBGm9U_w6rrHvP3qnTnvnGT2Mwc1LP"  # Ganti dengan ID file-mu
 
-if uploaded_file is not None:
-    all_df = pd.read_csv(uploaded_file)
-    st.success("File berhasil diunggah!")
+# URL untuk mengunduh file dari Google Drive
+url = f"https://drive.google.com/uc?id={file_id}"
+
+# Download file
+response = requests.get(url)
+if response.status_code == 200:
+    all_df = pd.read_csv(StringIO(response.text))
+    st.success("Dataset berhasil dimuat dari Google Drive!")
 else:
-    st.warning("Silakan upload file CSV terlebih dahulu.")
-    st.stop()  # Menghentikan eksekusi jika tidak ada file
+    st.error("Gagal mengunduh dataset. Periksa ID file atau izin akses.")
+    st.stop()
+
 
 # Load data
 all_df = pd.read_csv('all_data.csv')
