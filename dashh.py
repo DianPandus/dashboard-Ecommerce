@@ -15,6 +15,7 @@ file_id = "1gFSBGm9U_w6rrHvP3qnTnvnGT2Mwc1LP"  # Ganti dengan ID file-mu
 url = f"https://drive.google.com/uc?id={file_id}"
 
 # Download file
+st.write("Mengunduh dataset dari Google Drive...")
 response = requests.get(url)
 if response.status_code == 200:
     all_df = pd.read_csv(StringIO(response.text))
