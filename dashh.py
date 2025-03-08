@@ -17,9 +17,14 @@ url = f"https://drive.google.com/uc?id={file_id}"
 # Download file
 st.write("Mengunduh dataset dari Google Drive...")
 response = requests.get(url)
+
 if response.status_code == 200:
-    all_df = pd.read_csv(StringIO(response.text))
-    st.success("Dataset berhasil dimuat dari Google Drive!")
+    st.success("Dataset berhasil diunduh!")
+
+    # Simpan dalam format biner untuk memastikan file terbaca dengan baik
+    all_df = pd.read_csv(BytesIO(response.content))
+    
+    st.success("Dataset berhasil dimuat!")
 else:
     st.error("Gagal mengunduh dataset. Periksa ID file atau izin akses.")
     st.stop()
