@@ -30,10 +30,6 @@ else:
     st.error("Gagal mengunduh dataset. Periksa ID file atau izin akses.")
     st.stop()
 
-
-# Load data
-all_df = pd.read_csv('all_data.csv')
-
 # Konversi kolom tanggal ke datetime
 all_df['order_purchase_timestamp'] = pd.to_datetime(all_df['order_purchase_timestamp'])
 
